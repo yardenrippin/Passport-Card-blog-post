@@ -1,0 +1,27 @@
+<div class="container mb-4">
+ <div class="box-footer" style="display: block;">
+
+      <img class="img-responsive img-circle img-sm" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Alt Text">
+      <div class="img-push">
+        <input [(ngModel)]="commentStr"  (keyup.enter)="addComment()" type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+      </div>
+
+  </div>
+
+  <div *ngFor="let comment of comments" class="box-footer box-comments " style="display: block;" >
+    <div class="box-comment">
+      <img class="img-circle img-sm" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User Image">
+      <div class="comment-text">
+        <span class="username">
+
+        <span class="text-muted pull-right">{{comment.datetime | date: 'short'}}</span>
+        </span>
+        {{comment.content}}
+      </div>
+
+  </div>
+</div>
+</div>
+
+
+

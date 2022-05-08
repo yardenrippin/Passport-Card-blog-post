@@ -1,0 +1,56 @@
+<div class="container">
+  <div>
+    <h1 class="text-center text-primary">What is in your mind ?</h1>
+  </div>
+  <div class="border border-info border-2 p-2 mt-5">
+
+<form #PostForm="ngForm" class="form-group" (ngSubmit)="AddPost(Post)" required  >
+    <div class="form-outline mb-4">
+      <label class="form-label  text-primary " for="name"><h4 class=" text-dark">Name</h4></label>
+      <input  [(ngModel)]="Post.author" type="text" #name="ngModel"  name="name"
+       class="form-control" placeholder="required name" required minlength="2"
+       />
+   <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert">
+    <div class="text-danger" *ngIf="name.errors?.['required']">
+    * Name is required.
+    </div>
+    <div class="text-danger" *ngIf="name.errors?.['minlength']">
+    * Name must be at least 2 characters long.
+    </div>
+    </div>
+      </div>
+    <div class="form-outline mb-4">
+      <label  text-primary class="form-label" for="title"><h4 class=" text-dark">Title</h4></label>
+      <input [(ngModel)]="Post.title" type="text" #title="ngModel" name="title"  placeholder="required title"   id="title" class="form-control"required  minlength="2"/>
+      <div *ngIf="title.invalid && (title.dirty || title.touched)"
+      class="alert">
+       <div class="text-danger" *ngIf="title.errors?.['required']">
+       * title is required.
+       </div>
+      <div class="text-danger" *ngIf="title.errors?.['minlength']">
+      * title must be at least 2 characters long.
+      </div>
+    </div>
+    </div>
+
+      <div class="form-outline mb-4">
+      <label  class="form-label" for="content"><h4 class=" text-dark">Content</h4></label>
+      <textarea name="content" [(ngModel)]="Post.content"  #content="ngModel"class="form-control" id="content" rows="4" required minlength="10"></textarea>
+      <div *ngIf="content.invalid && (content.dirty || content.touched)"
+      class="alert">
+       <div class="text-danger" *ngIf="content.errors?.['required']">
+          * content is required.
+       </div>
+      <div class="text-danger" *ngIf="content.errors?.['minlength']">
+       * content must be at least 10 characters long.
+      </div>
+    </div>
+    </div>
+
+
+    <button  [disabled]="PostForm.form.invalid" type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+  </form>
+</div>
+</div>
+
